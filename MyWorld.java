@@ -19,4 +19,5 @@ public class MyWorld extends World
         Zombies z = new Zombies();
         addObject(z, 50, 225);
     }
+ 
 }
