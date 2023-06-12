@@ -17,4 +17,16 @@ public class TitleScreen extends World
     {    
         super(700, 450, 1);  
     }
+    /**
+     * Game start 
+     
+    public void act()
+    {
+        if(Greenfoot.isKeyDown("space"))
+        {
+            MyWorld gameWorld = new MyWorld();
+            Greenfoot.setWorld(gameWorld);
+        }
+    }
+    */
 }
