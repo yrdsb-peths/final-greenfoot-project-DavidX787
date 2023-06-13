@@ -46,9 +46,12 @@ public class Zombies extends Actor
     int imageIndex = 0;
     public void animateZomb()
     {
+        if(animationTimer.millisElapsed() < 200){
+            return;
+        }
+        animationTimer.mark();
         setImage(idle[imageIndex]);
         imageIndex = (imageIndex + 1) % idle.length;
-        animationTimer.mark();
     }
         
 }
