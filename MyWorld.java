@@ -8,7 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MyWorld extends World
 {
-
+    public int score = 0;
+    Label scoreLabel;
+    int level = 1;
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -21,7 +23,11 @@ public class MyWorld extends World
         prepare();
         
     }
-
+    public void act()
+    {
+        
+        
+    }
     /**
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
@@ -32,8 +38,30 @@ public class MyWorld extends World
         addObject(heli,1110,251);
         heli.setLocation(1190,226);
         heli.setLocation(273,285);
-        Label label = new Label(0, 80);
-        addObject(label,118,72);
-        label.setLocation(82,67);
+        scoreLabel = new Label(0, 80);
+        addObject(scoreLabel,118,72);
+        
+    }
+    
+    public void increaseScore()
+    {
+        score++;
+        scoreLabel.setValue(score);
+        
+        if(score % 5 == 0)
+        {
+            level += 1;
+        }
+        
+    }
+    
+    public void spawnZombie()
+    {
+        Zombies zombie = new Zombies();
+        //zombie.setSpeed(level);
+        int x = 1200;
+        int y = Greenfoot.getRandomNumber(600);
+        addObject(zombie, x, y);
+
     }
 }

@@ -21,9 +21,9 @@ public class PEA extends Actor
         int y = getY();
         setLocation(x,y);
         
-        // Removes pea object if it reaches the world height
+        // Removes pea object if it reaches the world width
         World world = (World) getWorld();
-        if(getY() >= world.getHeight())
+        if(getX() >= world.getWidth()-50)
         {
             world.removeObject(this);
         }

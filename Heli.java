@@ -22,7 +22,6 @@ public class Heli extends Actor
     {
         // Add your action code here.
         
-        
         if(Greenfoot.isKeyDown("up"))
         {
             setLocation(getX(), getY()-3);
@@ -43,7 +42,7 @@ public class Heli extends Actor
             {
                 shootPea();
                 canShoot = false;
-                fireTimer = 10;
+                fireTimer = 100;
             }
             else
             {

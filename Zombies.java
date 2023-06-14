@@ -14,6 +14,7 @@ public class Zombies extends Actor
      */
     GreenfootImage[] idle = new GreenfootImage[8];
     SimpleTimer animationTimer = new SimpleTimer();
+    int random = 4;
     public void act()
     {
         // Add your action code here.
@@ -26,6 +27,22 @@ public class Zombies extends Actor
         {
             //world.gameOver();
             world.removeObject(this);
+        }
+        if(isTouching(PEA.class))
+        {
+            removeTouching(PEA.class);
+            //deathSound.play();
+            //createExplosion();
+            world.increaseScore();
+            world.removeObject(this);
+            
+            if(Greenfoot.getRandomNumber(random) == 2){
+                world.spawnZombie();
+                world.spawnZombie();
+            }
+            else{
+                world.spawnZombie();
+            }
         }
         //animate the zombie
         animateZomb();
