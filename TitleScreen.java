@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class TitleScreen extends World
 {
-
+    GreenfootSound background = new GreenfootSound("menu.wav");
     /**
      * Constructor for objects of class TitleScreen.
      * 
@@ -28,7 +28,12 @@ public class TitleScreen extends World
         {
         MyWorld gameWorld = new MyWorld();
         Greenfoot.setWorld(gameWorld);
+        stopBackgroundMusic();
         }
+        else{
+            background.playLoop();
+        }
+        
     }
     
     public void menu()
@@ -45,5 +50,15 @@ public class TitleScreen extends World
     {
         Menu menu = new Menu();
         addObject(menu,430,300);
+        Label label = new Label("Click Space To Begin", 50);
+        addObject(label,430,480);
+    }
+    
+    /**
+     * Stops the background music once the screen is changed
+     */
+    public void stopBackgroundMusic()
+    {
+        background.stop();
     }
 }

@@ -11,7 +11,7 @@ public class MyWorld extends World
     GreenfootSound backgroundMusic = new GreenfootSound("background.wav");
     public int score = 0;
     Label scoreLabel;
-    int level = 1;
+    public int Level = 1;
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -23,12 +23,14 @@ public class MyWorld extends World
         addObject(z, 1200, 225);
         prepare();
         backgroundMusic.playLoop();
+        
     }
     public void act()
     {
-        
-        
+          
     }
+        
+    
     /**
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
@@ -44,14 +46,15 @@ public class MyWorld extends World
         
     }
     
+    
     public void increaseScore()
     {
         score++;
         scoreLabel.setValue(score);
         
-        if(score % 5 == 0)
+        if(score % 10 == 0)
         {
-            level += 1;
+            Level += 1;
         }
         
     }

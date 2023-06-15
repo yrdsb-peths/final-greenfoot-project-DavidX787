@@ -17,7 +17,7 @@ public class Heli extends Actor
     int speed = 2;
     int fireTimer = 0;
     boolean canShoot = true;
-    
+    //public int Level;
     public void act()
     {
         // Add your action code here.
@@ -42,7 +42,7 @@ public class Heli extends Actor
             {
                 shootPea();
                 canShoot = false;
-                fireTimer = 100;
+                fireTimer = 105;//- (Level*50);
             }
             else
             {

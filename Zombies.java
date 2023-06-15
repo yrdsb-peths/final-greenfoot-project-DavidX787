@@ -15,13 +15,12 @@ public class Zombies extends Actor
     GreenfootImage[] idle = new GreenfootImage[8];
     GreenfootSound comingZombie = new GreenfootSound("zombies_coming.wav");
     SimpleTimer animationTimer = new SimpleTimer();
-    int zombieCount = 0; 
+    public int zombieCount = 0; 
     int zombieHealth = 100; 
     public void act()
     {
         //zombie moving
         setLocation(getX() -1 , getY());
-        
         zombieHit(50);
         //animate the zombie
         animateZomb();
@@ -77,6 +76,10 @@ public class Zombies extends Actor
         {
             zombieHealth -= damage;
             removeTouching(PEA.class);
+            if(Greenfoot.getRandomNumber(3) == 1)
+            {
+                world.spawnZombie();
+            }
         }
         
         if(zombieHealth <= 0)
@@ -86,6 +89,8 @@ public class Zombies extends Actor
                 MyWorld world = (MyWorld) getWorld();
                 world.increaseScore();
                 world.removeObject(this);
+             
             }
     }
 }
+
