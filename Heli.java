@@ -72,7 +72,7 @@ public class Heli extends Actor
         for(int i = 0; i < animateHeli.length; i++)
         {
             animateHeli[i] = new GreenfootImage("images/image" + (i) + ".png");
-            animateHeli[i].scale(420,150);
+            animateHeli[i].scale(300, 120);
         }
         animationTimer.mark();
         setImage(animateHeli[0]);

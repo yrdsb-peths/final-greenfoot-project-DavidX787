@@ -3,8 +3,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class Zombies here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author David
+ * @version June 2023
  */
 public class Zombies extends Actor
 {
@@ -13,44 +13,31 @@ public class Zombies extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     GreenfootImage[] idle = new GreenfootImage[8];
+    GreenfootSound comingZombie = new GreenfootSound("zombies_coming.wav");
     SimpleTimer animationTimer = new SimpleTimer();
-    int random = 4;
+    int zombieCount = 0; 
+    int zombieHealth = 100; 
     public void act()
     {
-        // Add your action code here.
+        //zombie moving
         setLocation(getX() -1 , getY());
         
-        
-   
-        MyWorld world = (MyWorld) getWorld();
-        if(getY() >=world.getHeight())
-        {
-            //world.gameOver();
-            world.removeObject(this);
-        }
-        if(isTouching(PEA.class))
-        {
-            removeTouching(PEA.class);
-            //deathSound.play();
-            //createExplosion();
-            world.increaseScore();
-            world.removeObject(this);
-            
-            if(Greenfoot.getRandomNumber(random) == 2){
-                world.spawnZombie();
-                world.spawnZombie();
-            }
-            else{
-                world.spawnZombie();
-            }
-        }
+        zombieHit(50);
         //animate the zombie
         animateZomb();
     }
+   
+    
     
     public Zombies()
     {
-
+        //plays music when no zombies
+        if(zombieCount==0)
+        {
+            comingZombie.play();
+        }
+        zombieCount+=1;
+        //zombie animation code
         for(int i = 0; i < idle.length; i ++)
         {
             idle[i] = new GreenfootImage("images/tile00" + i + ".png");
@@ -70,5 +57,35 @@ public class Zombies extends Actor
         setImage(idle[imageIndex]);
         imageIndex = (imageIndex + 1) % idle.length;
     }
+    
+        /**
+     * This method sets the health of a zombie object
+     */
+    public void setHealth(int health)
+    {
+        zombieHealth = health;
+    }
+
+    
+    /**
+     * This method is called whenever a zombie is hit by an object of the bullet class.
+     * It takes the input: the damage caused by the bullet, which is reduced from its health,
+     */
+    public void zombieHit(int damage)
+    {   
+        if(isTouching(PEA.class))
+        {
+            zombieHealth -= damage;
+            removeTouching(PEA.class);
+        }
         
+        if(zombieHealth <= 0)
+            {
+                removeTouching(PEA.class);                
+                
+                MyWorld world = (MyWorld) getWorld();
+                world.increaseScore();
+                world.removeObject(this);
+            }
+    }
 }

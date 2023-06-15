@@ -15,18 +15,35 @@ public class TitleScreen extends World
      */
     public TitleScreen()
     {    
-        super(700, 450, 1);  
+        super(860, 600, 1);  
+        prepare();
     }
+
     /**
      * Game start 
-     
+     */
     public void act()
     {
         if(Greenfoot.isKeyDown("space"))
         {
-            MyWorld gameWorld = new MyWorld();
-            Greenfoot.setWorld(gameWorld);
+        MyWorld gameWorld = new MyWorld();
+        Greenfoot.setWorld(gameWorld);
         }
     }
-    */
+    
+    public void menu()
+    {
+        Menu menu = new Menu();
+        //addObject(menu,255,460);
+    }
+    
+    /**
+     * Prepare the world for the start of the program.
+     * That is: create the initial objects and add them to the world.
+     */
+    private void prepare()
+    {
+        Menu menu = new Menu();
+        addObject(menu,430,300);
+    }
 }

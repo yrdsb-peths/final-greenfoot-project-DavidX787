@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MyWorld extends World
 {
+    GreenfootSound backgroundMusic = new GreenfootSound("background.wav");
     public int score = 0;
     Label scoreLabel;
     int level = 1;
@@ -21,7 +22,7 @@ public class MyWorld extends World
         Zombies z = new Zombies();
         addObject(z, 1200, 225);
         prepare();
-        
+        backgroundMusic.playLoop();
     }
     public void act()
     {
@@ -63,5 +64,12 @@ public class MyWorld extends World
         int y = Greenfoot.getRandomNumber(600);
         addObject(zombie, x, y);
 
+    }
+        /**
+     * Stops the background music when the game ends
+     */
+    public void stopBackgroundMusic()
+    {
+       backgroundMusic.stop();
     }
 }
