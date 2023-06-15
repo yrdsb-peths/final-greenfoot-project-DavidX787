@@ -12,6 +12,7 @@ public class MyWorld extends World
     public int score = 0;
     Label scoreLabel;
     public int Level = 1;
+    int waveTimer = 0;
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -27,6 +28,13 @@ public class MyWorld extends World
     }
     public void act()
     {
+          
+          if(waveTimer <= 0)
+          {
+              spawnZombie();
+              waveTimer = 400;
+          }
+          waveTimer--;
           
     }
         
@@ -59,10 +67,13 @@ public class MyWorld extends World
         
     }
     
+    /*
+     * allows you to spawn a zombie 
+     */
     public void spawnZombie()
     {
         Zombies zombie = new Zombies();
-        //zombie.setSpeed(level);
+        zombie.speed = Level;
         int x = 1200;
         int y = Greenfoot.getRandomNumber(600);
         addObject(zombie, x, y);
@@ -74,5 +85,12 @@ public class MyWorld extends World
     public void stopBackgroundMusic()
     {
        backgroundMusic.stop();
+    }
+    
+    public void gameOver()
+    {
+            TitleScreen gameOver = new TitleScreen();  
+            Greenfoot.setWorld(gameOver);
+            stopBackgroundMusic();
     }
 }

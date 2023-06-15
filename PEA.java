@@ -17,12 +17,12 @@ public class PEA extends Actor
     public void act() 
     {
         // Keeps pea constantly "moving"
-        int x = getX() + peaSpeed;
+        MyWorld world = (MyWorld) getWorld();
+        int x = getX() + peaSpeed + world.Level;
         int y = getY();
         setLocation(x,y);
         
         // Removes pea object if it reaches the world width
-        World world = (World) getWorld();
         if(getX() >= world.getWidth()-50)
         {
             world.removeObject(this);

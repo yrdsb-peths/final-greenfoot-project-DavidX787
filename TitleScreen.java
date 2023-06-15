@@ -9,6 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class TitleScreen extends World
 {
     GreenfootSound background = new GreenfootSound("menu.wav");
+    
     /**
      * Constructor for objects of class TitleScreen.
      * 

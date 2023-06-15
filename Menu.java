@@ -14,6 +14,6 @@ public class Menu extends Actor
      */
     public void act()
     {
-
+        setImage("images/pvz.png");
     }
 }

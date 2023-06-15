@@ -21,14 +21,14 @@ public class Heli extends Actor
     public void act()
     {
         // Add your action code here.
-        
+        MyWorld world = (MyWorld) getWorld();
         if(Greenfoot.isKeyDown("up"))
         {
-            setLocation(getX(), getY()-3);
+            setLocation(getX(), getY()-3-world.Level);
         }
         else if(Greenfoot.isKeyDown("down"))
         {
-            setLocation(getX(), getY()+3);
+            setLocation(getX(), getY()+3+world.Level);
         }
          // If helicopter  is at the edge of viewport, stops it moving further
         if(isAtEdge())
@@ -41,8 +41,13 @@ public class Heli extends Actor
             if(canShoot == true)
             {
                 shootPea();
+                if(world.Level >= 2)
+                {
+                    shootPea();
+                    shootPea();
+                }
                 canShoot = false;
-                fireTimer = 105;//- (Level*50);
+                fireTimer = 70 - (world.Level*15);
             }
             else
             {
