@@ -32,7 +32,7 @@ public class MyWorld extends World
           if(waveTimer <= 0)
           {
               spawnZombie();
-              waveTimer = 400;
+              waveTimer = 700;
           }
           waveTimer--;
           
@@ -57,10 +57,10 @@ public class MyWorld extends World
     
     public void increaseScore()
     {
-        score++;
+        score+= 5;
         scoreLabel.setValue(score);
         
-        if(score % 10 == 0)
+        if(score % 100 == 0)
         {
             Level += 1;
         }
@@ -73,7 +73,13 @@ public class MyWorld extends World
     public void spawnZombie()
     {
         Zombies zombie = new Zombies();
-        zombie.speed = Level;
+        if(Level == 1){
+            zombie.speed = Level;
+        }
+        else{
+            zombie.speed = Level - 1;
+        }
+        
         int x = 1200;
         int y = Greenfoot.getRandomNumber(600);
         addObject(zombie, x, y);

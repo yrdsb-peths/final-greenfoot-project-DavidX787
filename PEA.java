@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class PEA extends Actor
 {
-    int peaSpeed = 15;
+    int peaSpeed = 10;
     public PEA()
     {
         getImage().scale(30,30);
@@ -18,7 +18,7 @@ public class PEA extends Actor
     {
         // Keeps pea constantly "moving"
         MyWorld world = (MyWorld) getWorld();
-        int x = getX() + peaSpeed + world.Level;
+        int x = getX() + peaSpeed + world.Level*2;
         int y = getY();
         setLocation(x,y);
         

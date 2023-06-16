@@ -41,13 +41,13 @@ public class Heli extends Actor
             if(canShoot == true)
             {
                 shootPea();
-                if(world.Level >= 2)
+                if(world.Level >= 3)
                 {
                     shootPea();
                     shootPea();
                 }
                 canShoot = false;
-                fireTimer = 70 - (world.Level*15);
+                fireTimer = 100 - (world.Level*15);
             }
             else
             {

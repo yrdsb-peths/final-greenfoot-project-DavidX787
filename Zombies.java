@@ -12,12 +12,13 @@ public class Zombies extends Actor
      * Act - do whatever the Zombies wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    
     GreenfootImage[] idle = new GreenfootImage[8];
     GreenfootSound comingZombie = new GreenfootSound("zombies_coming.wav");
     SimpleTimer animationTimer = new SimpleTimer();
     public int zombieCount = 0; 
     public int speed = 1;
-    int zombieHealth = 100; 
+    int zombieHealth = 150; 
     public void act()
     {
         //zombie moving
@@ -84,15 +85,25 @@ public class Zombies extends Actor
         MyWorld world = (MyWorld) getWorld();
         if(isTouching(PEA.class))
         {
-            zombieHealth -= damage + (world.Level*15);
+            zombieHealth -= damage + (world.Level*25);
             removeTouching(PEA.class);
-            if(Greenfoot.getRandomNumber(4) == 1)
+            if(Greenfoot.getRandomNumber(15 - world.Level) == 1 && !((15-world.Level) < 0))
             {
                 world.spawnZombie();
                 world.spawnZombie();
             }
-            if(Greenfoot.getRandomNumber(12) == 1)
+            else if((15-world.Level) < 0)
             {
+                world.spawnZombie();
+                world.spawnZombie();
+            }
+            if(Greenfoot.getRandomNumber(25 - world.Level) == 1 && !((25-world.Level) < 0))
+            {
+                world.spawnZombie();
+                world.spawnZombie();
+                world.spawnZombie();
+            }
+            else if(((25-world.Level) < 0)){
                 world.spawnZombie();
                 world.spawnZombie();
                 world.spawnZombie();
@@ -101,9 +112,14 @@ public class Zombies extends Actor
         
         if(zombieHealth <= 0)
             {
-                removeTouching(PEA.class);                
-                
-                
+                removeTouching(PEA.class); 
+                if(Greenfoot.getRandomNumber(10 - world.Level) == 1 && !((10-world.Level) < 0))
+            {
+                world.spawnZombie();
+            }
+            else if ( (10-world.Level) < 0){
+                world.spawnZombie();
+            }
                 world.increaseScore();
                 world.removeObject(this);
              
